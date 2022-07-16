@@ -140,6 +140,8 @@ public class SnakeGame {
             if (playerScore >= TARGET_SCORE) {
                 System.out.println(currentPlayerName.toUpperCase() + " won the game...");
                 players.remove(currentPlayer);
+                noOfPlayers--;
+                counter--;
                 if (players.size() < 2) {
                     break;
                 }
