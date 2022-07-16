@@ -91,17 +91,17 @@ public class SnakeGame {
         int noOfPlayers = scanner.nextInt();
         scanner.nextLine();
 
-        if (noOfPlayers < 2) {
-            System.out.println("You need more than one Player to play the game... ");
-            System.exit(0);
-        }
-
         ArrayList<Player> players = new ArrayList<>();
         for (int i = 0; i < noOfPlayers; i++) {
             System.out.print("Enter Player " + (i + 1) + " Name: ");
             String playerName = scanner.nextLine().trim();
             Player player = new Player(playerName);
             players.add(player);
+        }
+        if (noOfPlayers == 1) {
+            Player player = new Player("Computer");
+            players.add(player);
+            noOfPlayers++;
         }
         System.out.println("Just use Enter button on the Keyboard to play... \n");
 
@@ -114,7 +114,9 @@ public class SnakeGame {
             System.out.print(currentPlayerName + "'s turn, you're at { " + playerScore + " } \n" +
                     checkForNearByLadders(playerScore) + " and " +
                     checkForNearBySnakes(playerScore) + ": ");
-            scanner.nextLine();
+
+            if(!currentPlayerName.equalsIgnoreCase("Computer"))
+                scanner.nextLine();
 
             int playerGuess = guessNumber();
             System.out.print("You've got " + playerGuess + " >> ");
@@ -137,7 +139,10 @@ public class SnakeGame {
 
             if (playerScore >= TARGET_SCORE) {
                 System.out.println(currentPlayerName.toUpperCase() + " won the game...");
-                break;
+                players.remove(currentPlayer);
+                if (players.size() < 2) {
+                    break;
+                }
             }
 
             counter++;
