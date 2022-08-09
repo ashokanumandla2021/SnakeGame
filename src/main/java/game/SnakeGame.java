@@ -3,7 +3,7 @@ package game;
 import java.util.*;
 
 /**
- * Player class is responsible for maintaining the score
+ * Player class
  */
 class Player {
     private final String name;
