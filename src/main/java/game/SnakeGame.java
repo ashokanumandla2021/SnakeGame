@@ -2,6 +2,9 @@ package game;
 
 import java.util.*;
 
+/**
+ * Player class
+ */
 class Player {
     private final String name;
     private int score;
