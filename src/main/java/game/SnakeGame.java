@@ -2,6 +2,9 @@ package game;
 
 import java.util.*;
 
+/**
+ * Player class is responsible for maintaining the score
+ */
 class Player {
     private final String name;
     private int score;
